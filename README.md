@@ -1,13 +1,18 @@
 # Henesis Wallet Recovery Tool
  본 도구는 고객이 유사시에 Henesis 시스템을 통하지 않고도 Henesis 지갑으로부터 코인을 출금할 수 있도록 지원하기 위해 만들어졌습니다.
+ 
  코인을 출금하기 위해서는 해당 마스터 지갑 생성시 다운로드 받았던 복구 키트(Recovery Kit) PDF 파일이 필요합니다.
+ 
  Henesis의 마스터 지갑은 2-of-3 Multisig 지갑이므로, 복구 키트에 적혀있는 Account Key, Backup Key를 활용하면 Henesis API 호출 없이도 코인을 출금할 수 있습니다.
+ 
 ## Requirements
 - Node >= v10.15.3
+
 ## 설치 방법
 ```shell
 $ npm i @haechi-labs/wallet-recovery
 ```
+
 ## 이더리움, 클레이튼 코인 출금 방법
 EthRecovery, KlayRecovery class 를 활용하여 이더리움/클레이튼 코인을 출금할 수 있습니다.
 ```javascript
@@ -21,11 +26,13 @@ const recovery = new EthRecovery({
 });
 ```
 출금 트랜잭션은 Account Key(EOA) 주소에서 발생시키므로 Account Key에 트랜잭션을 발생시킬 수 있도록 수수료(가스비) ETH/KLAY를 입금해야 합니다.
+
 Account Key의 address는 아래와 같이 얻을 수 있습니다.
 ```javascript
 console.log(recovery.getAccountKeyAddress());
 ```
 위에서 출력된 주소로 ETH/KLAY를 입금한 후 recover 함수를 통해 recovery address로 출금을 진행합니다.
+
 ERC20/KCT 토큰인 경우에는 tokenAddress에 해당 토큰 컨트랙트 주소를 넣으면 됩니다. tokenAddress에 값을 입력하지 않을 경우, 토큰이 아니라고 판단하여 ETH/KLAY가 출금됩니다.
 ```javascript
 const hash = await recovery.recover({
@@ -35,6 +42,7 @@ const hash = await recovery.recover({
 });
 console.log(hash);
 ```
+
 ## 비트코인 코인 복구 과정
 BtcRecovery class를 활용하여 비트코인을 출금할 수 있습니다.
 ```javascript
@@ -48,6 +56,7 @@ const recovery = new BtcRecovery({
 });
 ```
 비트코인의 경우 출금시 출금하는 금액에서 수수료가 차감되기 때문에 이더리움/클레이튼과 같이 따로 수수료를 입금할 필요가 없습니다.
+
 실시간 적정 출금 수수료는 blockstream.info에서 제공하는 API를 사용하였으며, 현 시점으로부터 2 confirmation 안에 채굴 될 수 있도록 수수료를 책정합니다.
 ```javascript
 const hash = await recovery.recover({
@@ -57,8 +66,10 @@ const hash = await recovery.recover({
 });
 console.log(hash);
 ```
+
 ### 예제
 출금 예제는 /example 패키지 안에 eth-recovery.ts, klay-recovery.ts, btc-recorver.ts를 확인하시면 됩니다. 실행하면 아래와 같이 출력되는 것을 확인할 수 있습니다.
+
 **이더리움 ETH 출금 예제**
 ```shell
 $ ts-node recover-eth.ts
@@ -73,6 +84,7 @@ The transaction result is
   “status”: true
 }
 ```
+
 **클레이튼 KLAY 출금 예제**
 ```shell
 $ ts-node recover-klay.ts
@@ -87,6 +99,7 @@ The transaction result is
   “status”: true
 }
 ```
+
 **이더리움 ERC20 토큰 출금 예제**
 ```shell
 $ ts-node recover-eth.ts
@@ -101,6 +114,7 @@ The transaction result is
   “status”: true
 }
 ```
+
 **비트코인 출금 예제**
 ```shell
 $ ts-node recover-btc.ts
