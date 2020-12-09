@@ -61,7 +61,7 @@ export class KlayRecovery extends Recovery {
         const txData = await this.buildMultiSigRawTransaction(params, transactionParams);
         const finalTxData = {
             ...txData,
-            gas: 850000,
+            gas: 200000,
             from: this.getAccountKeyAddress()
         };
         const signTx = await this.caver.klay.accounts.signTransaction(finalTxData, this.accountPriv);

@@ -73,12 +73,19 @@ export class EthRecovery extends Recovery {
         const txData = await this.buildMultiSigRawTransaction(params, transactionParams);
         const finalTxData = {
             ...txData,
-            gas: 1000000,
+            gas: 100000,
             gasPrice: "0x" + await this.web3.eth.getGasPrice()
         };
         const tx = new Transaction(finalTxData, {'chain': this.chain});
         tx.sign(Buffer.from(this.accountPriv.substring(2), 'hex'));
         const serializedTx = tx.serialize();
+        const estimateGas = await this.web3.eth.estimateGas({
+            from: "0x201649f61a886CaB3c475516927d5B921137A1DA",
+            to: finalTxData.to,
+            data: finalTxData.data
+        })
+        console.log('estimateGas', estimateGas)
+        console.log('accountKey', this.getAccountKeyAddress())
         const sendTx = await this.web3.eth
             .sendSignedTransaction('0x' + serializedTx.toString('hex'));
         const transactionResult = {
