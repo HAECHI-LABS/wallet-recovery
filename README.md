@@ -43,8 +43,8 @@ const hash = await recovery.recover({
 console.log(hash);
 ```
 
-## 비트코인 코인 복구 과정
-BtcRecovery class를 활용하여 비트코인을 출금할 수 있습니다.
+## 비트코인, 라이트코인 코인 복구 과정
+BtcRecovery, LtcRecovery class를 활용하여 비트코인을 출금할 수 있습니다.
 ```javascript
 import {BtcRecovery} from ‘@haechi-labs/wallet-recovery’;
 const recovery = new BtcRecovery({
@@ -125,4 +125,18 @@ The fee to be charged is 0.00000455 BTC.
 Therefore, the 0.00000545 BTC will be withdrawn.
 Successfully recover BTC from 2N77eQXo2C2HYFMnmFMvu5AYdaZUzteZb5K to 2N4sg1AxZsbfqAXtB88wAowgmPjhcEu6AXC with value 0.00000545 BTC.
 Transaction Id: 43437be09912fae870e920dcf71a0243c21f3f25a4f2dbdc495bf07ad089ca4a.
+```
+
+**라이트코인 출금 예제**
+```shell
+$ ts-node recover-ltc.ts
+
+Recovering LTC from QhTfpfxJh3ydDm7AvjCDmwo88xGEfCy873 to QhTfpfxJh3ydDm7AvjCDmwo88xGEfCy873.
+Address: 'QhTfpfxJh3ydDm7AvjCDmwo88xGEfCy873' has 1 utxos with value 0.01 LTC.
+- 0: utxo id: 20460c94803bd3420b113320cb433639317cff515bfef88e482680ae47e8d9de, index: 0.
+
+The fee to be charged is 0.00000455 LTC.
+Therefore, the 0.00999545 LTC will be withdrawn.
+Successfully recover LTC from QhTfpfxJh3ydDm7AvjCDmwo88xGEfCy873 to QhTfpfxJh3ydDm7AvjCDmwo88xGEfCy873 with value 0.00999545 LTC.
+Transaction Id: 3a93b2f9dd686a14500a48d8ce1036d648062e65a4620cc01058df42d55ef324.
 ```
