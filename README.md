@@ -140,3 +140,9 @@ Therefore, the 0.00999545 LTC will be withdrawn.
 Successfully recover LTC from QhTfpfxJh3ydDm7AvjCDmwo88xGEfCy873 to QhTfpfxJh3ydDm7AvjCDmwo88xGEfCy873 with value 0.00999545 LTC.
 Transaction Id: 3a93b2f9dd686a14500a48d8ce1036d648062e65a4620cc01058df42d55ef324.
 ```
+
+## @haechi-labs/wallet-recovery 배포하기
+
+1. `npm login`으로 로그인
+2. package.json의 버전 수정
+3. `npm publish --access public`으로 배포
