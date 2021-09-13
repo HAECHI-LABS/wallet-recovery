@@ -13,14 +13,14 @@ async function main() {
     env: Env.Main,
   });
 
-  const txId = await recovery.recover({
+  const txHash = await recovery.recover({
     walletAddress: "MBp9DJZVoYpKunzvRRf1nsXDBd5arTPM9Q",
     depositAddressHenesisPubKey:
       "0x03ef30f7eb671ffd414284125e458907a5dfd1520c206fa216088034ce6f50aa8f",
     recipientAddress: "MFUraerDzorrUcEkTkwHNHf1SFKD8zaGTo",
   });
 
-  console.log(txId);
+  console.log(txHash);
 }
 
 main().catch((err) => {

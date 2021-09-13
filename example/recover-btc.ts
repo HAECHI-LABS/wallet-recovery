@@ -11,13 +11,13 @@ async function main() {
     env: Env.Test
   });
 
-  const txId = await recovery.recover({
+  const txHash = await recovery.recover({
     walletAddress: "2N77eQXo2C2HYFMnmFMvu5AYdaZUzteZb5K",
     depositAddressHenesisPubKey: "0x0233d144a513eb7eb0a963c88557d76a921a32bb1033e01a2392fc73aa828f65f3",
     recipientAddress: "2N4sg1AxZsbfqAXtB88wAowgmPjhcEu6AXC"
   });
 
-  console.log(txId);
+  console.log(txHash);
 }
 
 main();
