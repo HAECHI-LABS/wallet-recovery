@@ -13,8 +13,8 @@
 $ npm i @haechi-labs/wallet-recovery
 ```
 
-## 이더리움, 클레이튼 코인 출금 방법
-EthRecovery, KlayRecovery class 를 활용하여 이더리움/클레이튼 코인을 출금할 수 있습니다.
+## 이더리움, 클레이튼, 바이낸스 스마트 체인 코인 출금 방법
+EthRecovery, KlayRecovery, BscRecovery class 를 활용하여 이더리움/클레이튼/바이낸스 스마트 체인 코인을 출금할 수 있습니다.
 ```javascript
 import {EthRecovery} from '@haechi-labs/wallet-recovery';
 const recovery = new EthRecovery({
@@ -25,15 +25,15 @@ const recovery = new EthRecovery({
   env: Env.Test // 테스트넷일 경우 Env.Test, 메인넷일 경우 Env.Main
 });
 ```
-출금 트랜잭션은 Account Key(EOA) 주소에서 발생시키므로 Account Key에 트랜잭션을 발생시킬 수 있도록 수수료(가스비) ETH/KLAY를 입금해야 합니다.
+출금 트랜잭션은 Account Key(EOA) 주소에서 발생시키므로 Account Key에 트랜잭션을 발생시킬 수 있도록 수수료(가스비) ETH/KLAY/BNB를 입금해야 합니다.
 
 Account Key의 address는 아래와 같이 얻을 수 있습니다.
 ```javascript
 console.log(recovery.getAccountKeyAddress());
 ```
-위에서 출력된 주소로 ETH/KLAY를 입금한 후 recover 함수를 통해 recovery address로 출금을 진행합니다.
+위에서 출력된 주소로 ETH/KLAY/BNB를 입금한 후 recover 함수를 통해 recovery address로 출금을 진행합니다.
 
-ERC20/KCT 토큰인 경우에는 tokenAddress에 해당 토큰 컨트랙트 주소를 넣으면 됩니다. tokenAddress에 값을 입력하지 않을 경우, 토큰이 아니라고 판단하여 ETH/KLAY가 출금됩니다.
+ERC20/KCT7/BEP20 토큰인 경우에는 tokenAddress에 해당 토큰 컨트랙트 주소를 넣으면 됩니다. tokenAddress에 값을 입력하지 않을 경우, 토큰이 아니라고 판단하여 ETH/KLAY/BNB가 출금됩니다.
 ```javascript
 const hash = await recovery.recover({
   recipientAddress: "받는 주소",
@@ -97,6 +97,21 @@ The transaction result is
   "transactionHash": "0xb6a9389570aa7f930f536b4f6764b12d5d4607168a9e1b3285a149e0e9a93a2d",
   "transactionFee": 0.002168825,
   "status": true
+}
+```
+
+**바이낸스 스마트 체인 BNB 출금 예제**
+```shell
+$ ts-node recover-bsc.ts
+Recovering BNB from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E'...
+The address '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' has value of 0.0105 BNB.
+The fee to be charged is 0.00079593 BNB, and it will be withdrawn from account '0xbf1228102043FB10Be904df3eF8CD1599Ac73A78'.
+Successfully recovered BNB from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E' with value of 0.0105 BNB.
+The transaction result is
+{
+        "transactionHash": "0x0d1c9a7e7ca29d1105e576f6b9a5d0214e5ea304e88c27f133486d1841ff9d01",
+        "transactionFee": 0.00079593,
+        "status": true
 }
 ```
 
