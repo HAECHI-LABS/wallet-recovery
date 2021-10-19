@@ -38,7 +38,7 @@ ERC20/KCT7/BEP20 토큰인 경우에는 tokenAddress에 해당 토큰 컨트랙�
 const hash = await recovery.recover({
   recipientAddress: "받는 주소",
   walletAddress: "출금하려는 마스터 지갑 주소 또는 사용자 지갑 주소",
-  tokenAddress: "0x12313" // ERC20/KCT 토큰을 출금하는 경우에만 입력하며, ETH/KLAY를 출금하는 경우에는 생략
+  tokenAddress: "0x12313" // ERC20/KCT/BEP20 토큰을 출금하는 경우에만 입력하며, ETH/KLAY/BNB를 출금하는 경우에는 생략
 });
 console.log(hash);
 ```
