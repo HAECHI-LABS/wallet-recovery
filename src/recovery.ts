@@ -12,7 +12,8 @@ import {AbiItem} from "web3-utils";
 
 export enum BlockchainType {
     Ethereum = "ETHEREUM",
-    Klaytn = "KLAYTN"
+    Klaytn = "KLAYTN",
+    BinanceSmartChain = "BINANCE_SMART_CHAIN"
 }
 
 export const enum Env {
