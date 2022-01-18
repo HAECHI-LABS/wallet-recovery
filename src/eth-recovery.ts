@@ -12,6 +12,7 @@ import BN from "bn.js";
 import BigDecimal from "big.js"
 import erc20Abi from "./abi/ERC20.json";
 import {AbiItem} from "web3-utils";
+import { BNConverter } from "@haechi-labs/henesis-wallet-core";
 
 export class EthRecovery extends Recovery {
     private readonly chain: string = "ropsten";
@@ -74,7 +75,7 @@ export class EthRecovery extends Recovery {
         const finalTxData = {
             ...txData,
             gas: 100000,
-            gasPrice: "0x" + await this.web3.eth.getGasPrice()
+            gasPrice: BNConverter.decimalStringToBn(await this.web3.eth.getGasPrice())
         };
         const tx = new Transaction(finalTxData, {'chain': this.chain});
         tx.sign(Buffer.from(this.accountPriv.substring(2), 'hex'));
