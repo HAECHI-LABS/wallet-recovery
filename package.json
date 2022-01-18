@@ -1,6 +1,6 @@
 {
   "name": "@haechi-labs/wallet-recovery",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "henesis wallet recovery library",
   "author": "Haechi-labs <haechi@haechi.io>",
   "main": "./lib/index.js",
