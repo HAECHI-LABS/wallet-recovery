@@ -13,8 +13,8 @@
 $ npm i @haechi-labs/wallet-recovery
 ```
 
-## 이더리움, 클레이튼, 바이낸스 스마트 체인 코인 출금 방법
-EthRecovery, KlayRecovery, BscRecovery class 를 활용하여 이더리움/클레이튼/바이낸스 스마트 체인 코인을 출금할 수 있습니다.
+## 이더리움, 클레이튼, 바이낸스 스마트 체인, 폴리곤 코인 출금 방법
+EthRecovery, KlayRecovery, BscRecovery, PolygonRecovery class 를 활용하여 이더리움/클레이튼/바이낸스 스마트 체인/폴리곤 코인을 출금할 수 있습니다.
 ```javascript
 import {EthRecovery} from '@haechi-labs/wallet-recovery';
 const recovery = new EthRecovery({
@@ -103,6 +103,21 @@ The transaction result is
 **바이낸스 스마트 체인 BNB 출금 예제**
 ```shell
 $ ts-node recover-bsc.ts
+Recovering BNB from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E'...
+The address '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' has value of 0.0105 BNB.
+The fee to be charged is 0.00079593 BNB, and it will be withdrawn from account '0xbf1228102043FB10Be904df3eF8CD1599Ac73A78'.
+Successfully recovered BNB from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E' with value of 0.0105 BNB.
+The transaction result is
+{
+        "transactionHash": "0x0d1c9a7e7ca29d1105e576f6b9a5d0214e5ea304e88c27f133486d1841ff9d01",
+        "transactionFee": 0.00079593,
+        "status": true
+}
+```
+
+**폴리곤 MATIC 출금 예제**
+```shell
+$ ts-node recover-polygon.ts
 Recovering BNB from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E'...
 The address '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' has value of 0.0105 BNB.
 The fee to be charged is 0.00079593 BNB, and it will be withdrawn from account '0xbf1228102043FB10Be904df3eF8CD1599Ac73A78'.
