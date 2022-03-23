@@ -118,10 +118,10 @@ The transaction result is
 **폴리곤 MATIC 출금 예제**
 ```shell
 $ ts-node recover-polygon.ts
-Recovering BNB from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E'...
-The address '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' has value of 0.0105 BNB.
-The fee to be charged is 0.00079593 BNB, and it will be withdrawn from account '0xbf1228102043FB10Be904df3eF8CD1599Ac73A78'.
-Successfully recovered BNB from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E' with value of 0.0105 BNB.
+Recovering MATIC from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E'...
+The address '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' has value of 0.0105 MATIC.
+The fee to be charged is 0.00079593 MATIC, and it will be withdrawn from account '0xbf1228102043FB10Be904df3eF8CD1599Ac73A78'.
+Successfully recovered MATIC from '0x5369ffac48fbf1c2e72c3012114ab254c49f973e' to '0x7667f0085E853a53f4227703aa6710f526176d0E' with value of 0.0105 MATIC.
 The transaction result is
 {
         "transactionHash": "0x0d1c9a7e7ca29d1105e576f6b9a5d0214e5ea304e88c27f133486d1841ff9d01",
