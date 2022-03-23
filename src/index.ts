@@ -3,3 +3,4 @@ export * from "./eth-recovery";
 export * from "./klay-recovery";
 export * from "./ltc-recovery";
 export * from "./bsc-recovery";
+export * from "./polygon-recovery";
