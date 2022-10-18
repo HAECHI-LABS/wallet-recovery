@@ -1,12 +1,12 @@
-import {EthfRecovery} from '../src/ethf-recovery';
+import {EthwRecovery} from '../src/ethw-recovery';
 import {Env} from "../src/recovery";
 
 async function main() {
-    const recovery = new EthfRecovery({
-        host: null, // already set
-        accountKeyFile: '{"iv":"H4epeJvXarcY9RBbDy09tQ==","v":1,"iter":10000,"ks":256,"ts":64,"mode":"ccm","adata":"","c ipher":"aes","salt":"65NMVN0unIk=","ct":"/IY0oxRLTxB2csZeGrLJaywiwvtvSXZzK6zhg +HRWGsksPwjGDpghDjK6GhElmakCZ0rZNXk9rnvHTkHdGBWTpxWi3g0gW7Vkqk="}',
-        backupKeyFile: '{"iv":"ZevqguXBYGoNdZv4KE2ZIQ==","v":1,"iter":10000,"ks":256,"ts":64,"mode":"ccm","adata":""," cipher":"aes","salt":"WteugHEUCR0=","ct":"NyFXmRvtBkkyncduNQjdz1w2vFhpIF9SBi1JvfUatSB Td4tPKvTTPlcVxB4CZxMzax2SRBAimqlLLSKdI/RsJjSX+A5VT2vDKIs="}',
-        passphrase: 'password',
+    const recovery = new EthwRecovery({
+        host: ' ', // enter empty string
+        accountKeyFile: '{"iv":"G6+bJ7lmptq/EskMoJF1YA==","v":1,"iter":10000,"ks":256,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"FWz93U/j0BQ=","ct":"nLfw7UPecABBjld0rFhQ2dQEAr+7ODqgpe3txZQQkqf09phTiHXcFsy2dBjxXpumr1nGnsfxs33HDqpY/BO/0+Ef/SiXDH7oxUs="}',
+        backupKeyFile: '{"iv":"3NNkx3seHPVAEuGdNPV2lw==","v":1,"iter":10000,"ks":256,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"4UlUjbYwggE=","ct":"iDyp3EsjhymnFLxd/ZwBXHeiTYRvy5mAk1t3MSAphsDP2FjvHUjHyXzzeC/sLdLkwHCfBfFX5zIiPCabALZa3lU5RqIGLKFIWMI="}',
+        passphrase: 'password1!',
         env: Env.Main // Only using mainnet
     });
 
