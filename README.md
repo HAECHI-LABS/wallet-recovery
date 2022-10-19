@@ -43,6 +43,8 @@ const hash = await recovery.recover({
 console.log(hash);
 ```
 
+** The Merge 하드포크 이후로 스플릿 된 ETHW, ETHF 의 경우도 위의 방법과 동일하게 코인 출금 진행하면 됩니다.  
+
 ## 비트코인, 비트코인 캐시, 라이트코인 코인 복구 과정
 BtcRecovery, LtcRecovery class를 활용하여 비트코인을 출금할 수 있습니다.
 ```javascript
