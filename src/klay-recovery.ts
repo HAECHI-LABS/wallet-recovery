@@ -65,10 +65,10 @@ export class KlayRecovery extends Recovery {
             from: this.getAccountKeyAddress()
         };
         const signTx = await this.caver.klay.accounts.signTransaction(finalTxData, this.accountPriv);
-        const sendTx = await this.caver.klay.sendSignedTransaction(signTx);
+        const sendTx = await this.caver.klay.sendSignedTransaction(signTx.rawTransaction);
         const transactionResult = {
             transactionHash: sendTx.transactionHash,
-            transactionFee: parseFloat(this.caver.utils.fromPeb(25000000000)) * sendTx.gasUsed,
+            transactionFee: parseFloat(this.caver.utils.fromPeb(25000000000)) * parseFloat(sendTx.gasUsed),
             status: sendTx.status
         };
         console.log(`The fee to be charged is ${transactionResult.transactionFee} KLAY, and it will be withdrawn from account '${this.getAccountKeyAddress()}'.`);
