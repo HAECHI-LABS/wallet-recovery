@@ -13,7 +13,7 @@ async function main() {
     await recovery.recover({
         recipientAddress: '0x13da3a8be6cc271291515dfb65bd2e8ac73175b4', //0x4ff4d2923b9fc88bf5134f82e655443cddacbf90
         walletAddress: '0x4ff4d2923b9fc88bf5134f82e655443cddacbf90', //0x13da3a8be6cc271291515dfb65bd2e8ac73175b4
-        // tokenAddress: '0x0d4c27c49906208fbd9a9f3a43c63ccbd089f3bf'
+        amount: '0.12345678',
     });
 }
 
