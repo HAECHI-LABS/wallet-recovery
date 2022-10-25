@@ -60,14 +60,14 @@ export class EthfRecovery extends Recovery {
 
     public async recover(params: RecoverParams) {
         checkNullAndUndefinedParameter(params);
-        const totalValue = await this.getBalance(params);
-        const valueCalcWithDecimals = new BigDecimal(totalValue.amount).div(new BN(10).pow(new BN(totalValue.decimals)));
-        const symbol = params.tokenAddress ? totalValue.symbol : 'ETHF';
+        const etherValue = params.amount;
+        const weiValue = this.web3.utils.toWei(etherValue, 'ether');
+        const symbol = 'ETHF';
         console.log(`\nRecovering ${symbol} from '${params.walletAddress}' to '${params.recipientAddress}'...`);
-        console.log(`The address '${params.walletAddress}' has value of ${valueCalcWithDecimals} ${symbol}.`);
+        console.log(`The address '${params.walletAddress}' has value of ${etherValue} ${symbol}.`);
         const transactionParams = {
-            encodedData: this.walletContract.methods.transferEth(params.recipientAddress, totalValue.amount).encodeABI(),
-            amount: totalValue.amount,
+            encodedData: this.walletContract.methods.transferEth(params.recipientAddress, weiValue).encodeABI(),
+            amount: weiValue,
             nonce: await this.getNonce(this.getAccountKeyAddress()),
             randomNonce: this.getRandomNonce()
         }
@@ -95,7 +95,7 @@ export class EthfRecovery extends Recovery {
             status: sendTx.status
         };
         console.log(`The fee to be charged is ${transactionResult.transactionFee} ETH, and it will be withdrawn from account '${this.getAccountKeyAddress()}'.`);
-        console.log(`Successfully recovered ${symbol} from '${params.walletAddress}' to '${params.recipientAddress}' with value of ${valueCalcWithDecimals} ${symbol}.\n`);
+        console.log(`Successfully recovered ${symbol} from '${params.walletAddress}' to '${params.recipientAddress}' with value of ${etherValue} ${symbol}.\n`);
         console.log(`The transaction result is \n`);
         console.log(JSON.stringify(transactionResult, null, "\t"));
         console.log(`\n`);

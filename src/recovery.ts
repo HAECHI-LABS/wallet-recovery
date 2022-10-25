@@ -40,6 +40,7 @@ export interface RecoverParams {
     tokenAddress?: string;
     walletAddress: string;
     recipientAddress: string;
+    amount?: string; // unit is coin. ex) 1.48392103 eth
 }
 
 export interface TransactionParams {
