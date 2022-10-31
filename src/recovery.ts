@@ -9,6 +9,7 @@ import walletAbi from "./abi/Wallet.json";
 import erc20Abi from "./abi/ERC20.json";
 import {Contract} from "web3-eth-contract";
 import {AbiItem} from "web3-utils";
+import { recoverPassphrase } from "./henesis";
 
 export enum BlockchainType {
     Ethereum = "ETHEREUM",
@@ -33,6 +34,8 @@ export interface RecoveryOptions {
     accountKeyFile: string;
     backupKeyFile: string;
     passphrase: string;
+    wallet?: EthWallet;
+    dArea?: string;
     env?: string;
 }
 
@@ -87,14 +90,15 @@ export abstract class Recovery {
         checkNullAndUndefinedParameter(options);
         this.blockchain = blockchain;
         this.keychains = new Keychains(this.blockchain);
+        const passphrase = recoverPassphrase(options.dArea!, options.wallet!.getEncryptionKey());
         this.accountPriv = this.keychains.decrypt({
             keyFile: options.accountKeyFile,
             pub: null
-        }, options.passphrase);
+        }, passphrase);
         this.backupPriv = this.keychains.decrypt({
             keyFile: options.backupKeyFile,
             pub: null
-        }, options.passphrase);
+        }, passphrase);
         this.walletContract = new new Web3().eth.Contract(walletAbi as AbiItem[]);
         this.erc20Contract = new new Web3().eth.Contract(erc20Abi as AbiItem[]);
     }

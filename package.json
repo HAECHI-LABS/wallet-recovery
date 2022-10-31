@@ -16,7 +16,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@haechi-labs/henesis-wallet-core": "^3.3.4-alpha.5",
+    "@haechi-labs/henesis-wallet-core": "^3.10.0",
     "axios": "^0.21.0",
     "big.js": "6.2.1",
     "caver-js": "^1.4.1",
