@@ -21,7 +21,8 @@ import {EthRecovery} from '@haechi-labs/wallet-recovery';
 import { SDK } from "@haechi-labs/henesis-wallet-core";
 const sdk = new SDK({
   accessToken: 'Henesis Access Token',
-  secret: 'Henesis Secret'
+  secret: 'Henesis Secret',
+  env: 3
 });
 const recovery = new EthRecovery({
   host: '블록체인 노드(ex. Infura)의 URL endpoint',
@@ -44,6 +45,7 @@ console.log(recovery.getAccountKeyAddress());
 ERC20/KCT7/BEP20 토큰인 경우에는 tokenAddress에 해당 토큰 컨트랙트 주소를 넣으면 됩니다. tokenAddress에 값을 입력하지 않을 경우, 토큰이 아니라고 판단하여 ETH/KLAY/BNB가 출금됩니다.
 ```javascript
 const hash = await recovery.recover({
+  amount: 0, // ETHF / ETHW 단위
   recipientAddress: "받는 주소",
   walletAddress: "출금하려는 마스터 지갑 주소 또는 사용자 지갑 주소",
   tokenAddress: "0x12313" // ERC20/KCT/BEP20 토큰을 출금하는 경우에만 입력하며, ETH/KLAY/BNB를 출금하는 경우에는 생략

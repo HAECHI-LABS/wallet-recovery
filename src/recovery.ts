@@ -10,6 +10,7 @@ import erc20Abi from "./abi/ERC20.json";
 import {Contract} from "web3-eth-contract";
 import {AbiItem} from "web3-utils";
 import { recoverPassphrase } from "./henesis";
+import { EthWallet } from "@haechi-labs/henesis-wallet-core/lib/eth/wallet";
 
 export enum BlockchainType {
     Ethereum = "ETHEREUM",
