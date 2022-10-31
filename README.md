@@ -11,6 +11,7 @@
 ## 설치 방법
 ```shell
 $ npm i @haechi-labs/wallet-recovery
+$ npm i @haechi-labs/henesis-wallet-core
 ```
 
 ## 이더리움, 클레이튼, 바이낸스 스마트 체인, 폴리곤 코인 출금 방법
