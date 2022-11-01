@@ -1,6 +1,6 @@
 {
   "name": "@haechi-labs/wallet-recovery",
-  "version": "0.0.9-eth",
+  "version": "0.0.10-eth",
   "description": "henesis wallet recovery library",
   "author": "Haechi-labs <haechi@haechi.io>",
   "main": "./lib/index.js",
@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@haechi-labs/henesis-wallet-core": "^3.10.0",
+    "@haechi-labs/wallet-recovery": "0.0.9-eth",
     "axios": "^0.21.0",
     "big.js": "6.2.1",
     "caver-js": "^1.4.1",

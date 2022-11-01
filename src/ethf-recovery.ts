@@ -13,17 +13,20 @@ import BigDecimal from "big.js"
 import erc20Abi from "./abi/ERC20.json";
 import {AbiItem} from "web3-utils";
 import { BNConverter } from "@haechi-labs/henesis-wallet-core";
+import Common from "ethereumjs-common";
 
 export class EthfRecovery extends Recovery {
-    private readonly chain: string = "mainnet";
     private readonly web3: Web3;
+    private readonly ethereumJSCommon: Common;
 
     constructor(options: RecoveryOptions) {
         super(options, BlockchainType.Ethereum);
         this.web3 = new Web3('https://rpc.etherfair.org');
-        if (options.env === Env.Main) {
-            this.chain = "mainnet";
-        }
+        this.ethereumJSCommon = Common.forCustomChain("mainnet", {
+            name: 'EthereumFair',
+            networkId: 513100,
+            chainId: 513100
+        }, 'istanbul');
     }
 
     public getAccountKeyAddress(): string {
@@ -77,7 +80,7 @@ export class EthfRecovery extends Recovery {
             gas: 100000,
             gasPrice: BNConverter.decimalStringToBn(await this.web3.eth.getGasPrice())
         };
-        const tx = new Transaction(finalTxData, {'chain': this.chain});
+        const tx = new Transaction(finalTxData, {'common': this.ethereumJSCommon});
         tx.sign(Buffer.from(this.accountPriv.substring(2), 'hex'));
         const serializedTx = tx.serialize();
         const estimateGas = await this.web3.eth.estimateGas({
