@@ -18,20 +18,21 @@ $ npm i @haechi-labs/henesis-wallet-core
 EthRecovery, KlayRecovery, BscRecovery, PolygonRecovery class 를 활용하여 이더리움/클레이튼/바이낸스 스마트 체인/폴리곤 코인을 출금할 수 있습니다.
 ```javascript
 import {EthRecovery} from '@haechi-labs/wallet-recovery';
-import { SDK } from "@haechi-labs/henesis-wallet-core";
+import { Env as HEnv, SDK } from "@haechi-labs/henesis-wallet-core";
+import { Env } from '@haechi-labs/wallet-recovery/lib/recovery';
 const sdk = new SDK({
   accessToken: 'Henesis Access Token',
   secret: 'Henesis Secret',
-  env: 3
+  env: HEnv.Prod // 테스트넷일 경우 Env.Test, 메인넷일 경우 Env.Prod
 });
 const recovery = new EthRecovery({
   host: '블록체인 노드(ex. Infura)의 URL endpoint',
-  accountKeyFile: '복구 키트 PDF의 A 영역 Account Key Data' // example '{"iv":"4cAzFHxoTs3r2dP9kFTtyw==","v":1,"iter":10000,"ks":256,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"lc+7qEzXcDM=","ct":"x6Mbt9paLIV/pwZFSGxRNSx+zZOBu8euRieMeW2+ZGs8n/AaT9FI+1b519Otogbm3Zo4pM/aeNBrBg2rP97AfOJO8Ngob+9gY4g="}'
-  backupKeyFile: '복구 키트 PDF의 B 영역 Backup Key Data' // example '{"iv":"UdhntWT/HWXrn8ctyQZHCw==","v":1,"iter":10000,"ks":256,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"cvy5+5YIiLU=","ct":"Pcg9r2hfgUWblPm/6s9gqITHNuv5hYcVIJJfjeDYIJWpSUCIB9JstJ5bRPWux2qCoWNWlZhoCh9vBlXwMtwnx/kFtZmfxmjCiwc="}'
+  accountKeyFile: '복구 키트 PDF의 A 영역 Account Key Data', // example '{"iv":"4cAzFHxoTs3r2dP9kFTtyw==","v":1,"iter":10000,"ks":256,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"lc+7qEzXcDM=","ct":"x6Mbt9paLIV/pwZFSGxRNSx+zZOBu8euRieMeW2+ZGs8n/AaT9FI+1b519Otogbm3Zo4pM/aeNBrBg2rP97AfOJO8Ngob+9gY4g="}'
+  backupKeyFile: '복구 키트 PDF의 B 영역 Backup Key Data', // example '{"iv":"UdhntWT/HWXrn8ctyQZHCw==","v":1,"iter":10000,"ks":256,"ts":64,"mode":"ccm","adata":"","cipher":"aes","salt":"cvy5+5YIiLU=","ct":"Pcg9r2hfgUWblPm/6s9gqITHNuv5hYcVIJJfjeDYIJWpSUCIB9JstJ5bRPWux2qCoWNWlZhoCh9vBlXwMtwnx/kFtZmfxmjCiwc="}'
   passphrase: '마스터 지갑 비밀번호',
   wallet: await sdk.eth.wallets.getWallet('출금하려는 지갑의 id'),
   dArea: '복구 키트 PDF의 D 영역',
-  env: Env.Test // 테스트넷일 경우 Env.Test, 메인넷일 경우 Env.Main
+  env: Env.Main // 테스트넷일 경우 Env.Test, 메인넷일 경우 Env.Main
 });
 ```
 출금 트랜잭션은 Account Key(EOA) 주소에서 발생시키므로 Account Key에 트랜잭션을 발생시킬 수 있도록 수수료(가스비) ETH/KLAY/BNB를 입금해야 합니다.
