@@ -23,7 +23,7 @@ import { Env } from '@haechi-labs/wallet-recovery/lib/recovery';
 const sdk = new SDK({
   accessToken: 'Henesis Access Token',
   secret: 'Henesis Secret',
-  env: HEnv.Prod // 테스트넷일 경우 Env.Test, 메인넷일 경우 Env.Prod
+  env: HEnv.Prod // 테스트넷일 경우 HEnv.Test, 메인넷일 경우 HEnv.Prod
 });
 const recovery = new EthRecovery({
   host: '블록체인 노드(ex. Infura)의 URL endpoint',
