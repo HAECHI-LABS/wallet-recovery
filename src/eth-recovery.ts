@@ -60,14 +60,15 @@ export class EthRecovery extends Recovery {
 
     public async recover(params: RecoverParams) {
         checkNullAndUndefinedParameter(params);
-        const totalValue = await this.getBalance(params);
-        const valueCalcWithDecimals = new BigDecimal(totalValue.amount).div(new BN(10).pow(new BN(totalValue.decimals)));
-        const symbol = params.tokenAddress ? totalValue.symbol : 'ETH';
+        const totalValue = params.amount; //await this.getBalance(params);
+        const decimals  = 6;
+        const valueCalcWithDecimals = new BigDecimal(totalValue).div(new BN(10).pow(new BN(decimals)));
+        const symbol = params.tokenAddress ? totalValue : 'ETH';
         console.log(`\nRecovering ${symbol} from '${params.walletAddress}' to '${params.recipientAddress}'...`);
         console.log(`The address '${params.walletAddress}' has value of ${valueCalcWithDecimals} ${symbol}.`);
         const transactionParams = {
-            encodedData: this.walletContract.methods.transferEth(params.recipientAddress, totalValue.amount).encodeABI(),
-            amount: totalValue.amount,
+            encodedData: this.walletContract.methods.transferEth(params.recipientAddress, totalValue).encodeABI(),
+            amount: totalValue,
             nonce: await this.getNonce(this.getAccountKeyAddress()),
             randomNonce: this.getRandomNonce()
         }
